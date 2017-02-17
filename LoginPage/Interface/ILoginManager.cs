@@ -1,10 +1,9 @@
 ﻿using System;
 namespace LoginPage
 {
-	public class ILoginManager
+	public interface ILoginManager
 	{
-		public ILoginManager()
-		{
-		}
+		void ShowMainPage();
+		void Logout();
 	}
 }

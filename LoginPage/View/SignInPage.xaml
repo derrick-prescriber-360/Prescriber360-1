@@ -8,5 +8,6 @@
 		<Label Text="Welcome to Prescriber 360"></Label>
 		<Label Text="Please sign in" XAlign="Center"></Label>
 		<Button Text="Sign In" Clicked="Login_Clicked"></Button>
+		<ActivityIndicator x:Name="isBusy" IsVisible="false" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 	</StackLayout>
 </ContentPage>

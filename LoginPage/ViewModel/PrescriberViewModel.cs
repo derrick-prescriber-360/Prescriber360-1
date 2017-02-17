@@ -8,45 +8,77 @@ using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace LoginPage
 {
-	public class ContactViewModel :INotifyPropertyChanged
+	public class PrescriberViewModel : INotifyPropertyChanged
 	{
 		private JObject jsonData = null;
 		private Repository repository = new Repository();
-		private ObservableCollection<Prescriber> _filteredcontactlist = new ObservableCollection<Prescriber>();
-		private List<Prescriber> _contactlist = new List<Prescriber>();
-		private Prescriber _selectedContact;
+		private ObservableCollection<Prescriber> _filteredprescribercontactlist = new ObservableCollection<Prescriber>();
+		private List<Prescriber> _prescribercontactlist = new List<Prescriber>();
+		private Prescriber _selectedprescriberContact;
+		private INavigation _navigation;
+		private bool isBusy;
+		private ILoginManager _ilm;
 
 		public event PropertyChangedEventHandler PropertyChanged;
-
-		public ContactViewModel() 
+		public PrescriberViewModel() { }
+		public PrescriberViewModel(INavigation navigation)
 		{
+			IsBusy = true;
 			Initialize();
+			_navigation = navigation;
 		}
 
-		public ObservableCollection<Prescriber> ContactList
+		public ObservableCollection<Prescriber> PrescriberContactList
 		{
-			get 
+			get
 			{
-				return _filteredcontactlist;
+				return _filteredprescribercontactlist;
 			}
-			set 
-			{
-				_filteredcontactlist = value;
-				OnPropertyChanged("ContactList");
-			}
-		}
-
-
-		public Prescriber SelectedContact
-		{
-			get { return _selectedContact; }
 			set
 			{
-				_selectedContact = value;
-				OnPropertyChanged("SelectedContact");
+				_filteredprescribercontactlist = value;
+				OnPropertyChanged("PrescriberContactList");
+			}
+		}
+
+
+		public Prescriber SelectedPrescriberContact
+		{
+			get { return _selectedprescriberContact; }
+			set
+			{
+				_selectedprescriberContact = value;
+				OnPropertyChanged("SelectedPrescriberContact");
+			}
+		}
+
+		public bool IsBusy
+		{
+			get
+			{
+				return isBusy;
+			}
+
+			set
+			{
+				isBusy = value;
+			}
+		}
+
+		public ILoginManager Ilm
+		{
+			get
+			{
+				return _ilm;
+			}
+
+			set
+			{
+				_ilm = value;
 			}
 		}
 
@@ -54,14 +86,18 @@ namespace LoginPage
 		{
 			try
 			{
-				_contactlist = await GetContactList();
-				foreach (var c in _contactlist)
+				_prescribercontactlist = await GetPrescriberContactList();
+
+				foreach (var c in _prescribercontactlist)
 				{
-					ContactList.Add(c);
+					PrescriberContactList.Add(c);
 				}
+				IsBusy = false;
 			}
+
 			catch (Exception err)
 			{
+				IsBusy = false;
 				Debug.WriteLine(err.Message);
 			}
 			//_copycontactlist = ContactList;
@@ -72,17 +108,19 @@ namespace LoginPage
 			//ContactList = t;
 		}
 
-		public async Task<List<Prescriber>> GetContactList()
+		public async Task<List<Prescriber>> GetPrescriberContactList()
 		{
 			try
 			{
 				jsonData = await repository.Retrieve(GlobalVariables.AuthToken, "contacts", "");
-				var contactdata = JsonConvert.DeserializeObject<ContactList>(jsonData.ToString());
+				var contactdata = JsonConvert.DeserializeObject<PrescriberContactList>(jsonData.ToString());
 				return contactdata.value;
 			}
 			catch (Exception err)
 			{
 				Debug.WriteLine(err.Message);
+				//await _navigation.PushModalAsync(new SignInPage());
+
 			}
 
 			return null;
@@ -102,16 +140,17 @@ namespace LoginPage
 		{
 			try
 			{
-				ContactList.Clear();
-				foreach (var c in _contactlist)
+				PrescriberContactList.Clear();
+				foreach (var c in _prescribercontactlist)
 				{
 					if (c.fullname.ToLower().Contains(text.ToLower()))
 					{
-						ContactList.Add(c);
+						PrescriberContactList.Add(c);
 					}
 				}
 			}
-			catch (Exception err){
+			catch (Exception err)
+			{
 				Debug.WriteLine(err.Message);
 			}
 

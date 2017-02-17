@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LoginPage
 {
-	public class ContactList
+	public class PrescriberContactList
 	{
 		public List<Prescriber> value { get; set; }
 	}
@@ -28,10 +28,10 @@ namespace LoginPage
 		public bool donotphone { get; set; }
 		public int preferredcontactmethodcode { get; set; }
 		public string _ownerid_value { get; set; }
-		public int vcm_prescriberstatus { get; set; }
+		//public int vcm_prescriberstatus { get; set; }
 		public int customersizecode { get; set; }
 		public string firstname { get; set; }
-		public int vcm_leadresolution { get; set; }
+		//public int vcm_leadresolution { get; set; }
 		public int address2_addresstypecode { get; set; }
 		public bool vcm_maillocked { get; set; }
 		public bool donotemail { get; set; }

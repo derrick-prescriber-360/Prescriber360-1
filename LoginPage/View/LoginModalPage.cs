@@ -1,10 +1,15 @@
 ﻿using System;
+using Xamarin.Forms;
+
 namespace LoginPage
 {
-	public class LoginModalPage
+	public class LoginModalPage : CarouselPage
 	{
-		public LoginModalPage()
+		ContentPage login;
+		public LoginModalPage(ILoginManager ilm)
 		{
+			login = new SignInPage(ilm);
+			this.Children.Add(login);
 		}
 	}
 }

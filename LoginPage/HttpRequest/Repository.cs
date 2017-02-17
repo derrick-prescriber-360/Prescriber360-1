@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using System.IO;
 
 namespace LoginPage
 {
-	public class Requests
+	public class Repository
 	{
 		JObject jResult;
 		public async Task<JObject> Retrieve(string accessToken, string entity, string queryparams)
@@ -27,6 +28,7 @@ namespace LoginPage
 			response = await httpClient.SendAsync(req);
 			var responseBodyAsText = await response.Content.ReadAsStringAsync();
 			jResult = JObject.Parse(responseBodyAsText);
+			Debug.WriteLine(jResult);
 			return jResult;
 		}
 

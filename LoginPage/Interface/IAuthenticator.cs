@@ -1,10 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
 namespace LoginPage
 {
-	public class IAuthenticator
+	public interface IAuthenticator
 	{
-		public IAuthenticator()
-		{
-		}
+		Task<AuthenticationResult> Authenticate(string authority, string resource, string clientId, string returnUri);
 	}
 }

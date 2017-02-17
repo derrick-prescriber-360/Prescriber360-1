@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LoginPage.CutomerListPage" IsPresented="true">
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LoginPage.CustomerMasterPage" IsPresented="true">
 	<MasterDetailPage.Master>
 		<ContentPage Title="Customer" xmlns:ViewModel="clr-namespace:LoginPage">
-			<ContentPage.BindingContext>
+		<!--	<ContentPage.BindingContext>
 				<ViewModel:PrescriberViewModel>
 				</ViewModel:PrescriberViewModel>
-			</ContentPage.BindingContext>
+			</ContentPage.BindingContext>-->
 			<ContentPage.Content>
 				<StackLayout Orientation="Vertical" BackgroundColor="Silver">
-					<ListView ItemsSource="{Binding ContactList}" ItemSelected="Handle_ItemSelected" HeightRequest="120" x:Name="contactCustomerList" HasUnevenRows="true" Margin="100,0,100,0" SeparatorColor="Transparent" IsVisible="true">
+					<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="30" Margin="5,5,5,0" TextChanged="Handle_TextChanged" />
+					<ListView ItemsSource="{Binding PrescriberContactList}" Margin="5" ItemSelected="Handle_ItemSelected" x:Name="contactCustomerList" HasUnevenRows="true" SeparatorColor="Silver" IsVisible="true">
 						<ListView.ItemTemplate>
 							<DataTemplate>
 								<ViewCell>
 									<StackLayout Orientation="Vertical">
-										<Label Text="{Binding fullname}">
+										<Label Text="{Binding fullname}" Margin="4">
 										</Label>
 									</StackLayout>
 								</ViewCell>

@@ -1,14 +1,34 @@
 ﻿using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace LoginPage
 {
-	public partial class App : Application
+	public partial class App : Application, ILoginManager
 	{
 		public App()
 		{
 			InitializeComponent();
 
-			MainPage = new LoginPagePage();
+			var isLoggedIn = Properties.ContainsKey("IsLoggedIn") ? (bool)Properties["IsLoggedIn"] : false;
+
+			// we remember if they're logged in, and only display the login page if they're not
+			if (isLoggedIn)
+				MainPage = new NavigationPage(new Welcome());
+			else {
+				MainPage = new LoginModalPage(this);
+			}
+		}
+
+		public void ShowMainPage()
+		{
+			Debug.WriteLine("I am called ShowMainPage");
+			MainPage = new NavigationPage(new Welcome());
+		}
+
+		public void Logout()
+		{
+			Properties["IsLoggedIn"] = false; // only gets set to 'true' on the LoginPage
+			MainPage = new LoginModalPage(this);
 		}
 
 		protected override void OnStart()
