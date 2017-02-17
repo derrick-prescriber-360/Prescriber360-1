@@ -27,8 +27,15 @@ namespace LoginPage
 		public PrescriberViewModel() { }
 		public PrescriberViewModel(INavigation navigation)
 		{
-			IsBusy = true;
-			Initialize();
+			if ((GlobalVariables.GlobalContactList == null) || (GlobalVariables.GlobalContactList.Count == 0))
+				Initialize();
+			else {
+				foreach (var c in GlobalVariables.GlobalContactList)
+				{
+					PrescriberContactList.Add(c);
+					_prescribercontactlist.Add(c);
+				}
+			}
 			_navigation = navigation;
 		}
 
@@ -66,6 +73,7 @@ namespace LoginPage
 			set
 			{
 				isBusy = value;
+				OnPropertyChanged("IsBusy");
 			}
 		}
 
@@ -86,11 +94,13 @@ namespace LoginPage
 		{
 			try
 			{
+				IsBusy = true;
 				_prescribercontactlist = await GetPrescriberContactList();
 
 				foreach (var c in _prescribercontactlist)
 				{
 					PrescriberContactList.Add(c);
+					GlobalVariables.GlobalContactList.Add(c);
 				}
 				IsBusy = false;
 			}
