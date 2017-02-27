@@ -11,7 +11,10 @@ namespace LoginPage
 		public Welcome()
 		{
 			InitializeComponent();
-			BindingContext = new PrescriberViewModel(this.Navigation);
+			//BindingContext = new PrescriberViewModel(this.Navigation);
+			BindingContext = new AppointmentViewModel(this.Navigation);
+			//Add both contacts and accounts below correction with int type of country code
+			//BindingContext = new AccountViewModel(this.Navigation);
 		}
 
 		private PrescriberViewModel ViewModel { get { return BindingContext as PrescriberViewModel; } }
@@ -44,6 +47,15 @@ namespace LoginPage
 		async void Handle_Customer_Navigation(object sender, System.EventArgs e)
 		{
 			await Navigation.PushAsync(new CustomerMasterPage()
+			{
+				Title = "Prescriber360"
+			});
+
+		}
+
+		async void Handle_Appointment_Navigation(object sender, System.EventArgs e)
+		{
+			await Navigation.PushAsync(new AppointmentMasterPage()
 			{
 				Title = "Prescriber360"
 			});

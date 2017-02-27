@@ -5,9 +5,9 @@
 		</ViewModel:PrescriberViewModel>
 	</ContentPage.BindingContext>-->
 	<StackLayout>
-		<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="60" Margin="100,100,100,0" TextChanged="Handle_TextChanged_ContactList">
+		<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="60" Margin="100,60,100,0" TextChanged="Handle_TextChanged_ContactList">
 		</Entry>
-		<ListView ItemsSource="{Binding PrescriberContactList}" ItemTapped="Handle_ItemTapped_Selected_Contact" HeightRequest="120" x:Name="contactList" HasUnevenRows="true" Margin="100,0,100,0" SeparatorColor="Transparent" IsVisible="false">
+		<ListView ItemsSource="{Binding PrescriberContactList}" ItemTapped="Handle_ItemTapped_Selected_Contact" HeightRequest="160" x:Name="contactList" HasUnevenRows="true" Margin="100,0,100,0" SeparatorColor="Transparent" IsVisible="false">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
@@ -33,9 +33,9 @@
 			<Button Text="Customers" Clicked="Handle_Customer_Navigation" TextColor="Black" Grid.Row="0" Grid.Column="0" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
 			<Button Text="Reports" TextColor="Black" Grid.Row="0" Grid.Column="1" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
 			<Button Text="Pre Call Planning" TextColor="Black" Grid.Row="0" Grid.Column="2" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
-			<Button Text="Calendar" TextColor="Black" Grid.Row="1" Grid.Column="0" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
+			<Button Text="Calendar" Clicked="Handle_Appointment_Navigation" TextColor="Black" Grid.Row="1" Grid.Column="0" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
 			<Button Text="Media" TextColor="Black" Grid.Row="1" Grid.Column="1" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
-			<Button Text="Administra.,mn bvction" TextColor="Black" Grid.Row="1" Grid.Column="2" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
+			<Button Text="Administration" TextColor="Black" Grid.Row="1" Grid.Column="2" WidthRequest="80" HeightRequest="400" BorderWidth="1" />
 		</Grid>
 		<Button HorizontalOptions="End" TextColor="Black" Text="Call Entry" Margin="0,00,20,100" WidthRequest="200" HeightRequest="100" BorderWidth="1" />
 	</StackLayout>

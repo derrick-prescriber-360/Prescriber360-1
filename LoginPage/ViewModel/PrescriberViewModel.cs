@@ -129,8 +129,8 @@ namespace LoginPage
 			catch (Exception err)
 			{
 				Debug.WriteLine(err.Message);
-				//await _navigation.PushModalAsync(new SignInPage());
-
+				var a = new App();
+				a.Logout();
 			}
 
 			return null;
