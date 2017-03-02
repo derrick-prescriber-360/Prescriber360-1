@@ -43,7 +43,7 @@ namespace LoginPage
 				Debug.WriteLine(_ilm);
 				_ilm.ShowMainPage();
 				isBusy.IsRunning = false;
-				isBusy.IsVisible = false;
+				//isBusy.IsVisible = false;
 			}
 			catch (Exception err)
 			{

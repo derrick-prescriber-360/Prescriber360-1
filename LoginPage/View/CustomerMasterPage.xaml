@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LoginPage.CustomerMasterPage" IsPresented="true">
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LoginPage.CustomerMasterPage" IsPresented="true" MasterBehavior="Split">
 	<MasterDetailPage.Master>
 		<ContentPage Title="Customer" xmlns:ViewModel="clr-namespace:LoginPage">
-		<!--	<ContentPage.BindingContext>
+			<!--	<ContentPage.BindingContext>
 				<ViewModel:PrescriberViewModel>
 				</ViewModel:PrescriberViewModel>
 			</ContentPage.BindingContext>-->
 			<ContentPage.Content>
 				<StackLayout Orientation="Vertical" BackgroundColor="Silver">
-					<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="30" Margin="5,5,5,0" TextChanged="Handle_TextChanged" />
-					<ListView ItemsSource="{Binding PrescriberContactList}" Margin="5" ItemSelected="Handle_ItemSelected" x:Name="contactCustomerList" HasUnevenRows="true" SeparatorColor="Silver" IsVisible="true">
+					<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="50" Margin="10,10,10,5" TextChanged="Handle_TextChanged" />
+					<ListView ItemsSource="{Binding PrescriberContactList}" Margin="10" ItemSelected="Handle_ItemSelected" x:Name="contactCustomerList" HasUnevenRows="true" SeparatorColor="Silver" IsVisible="true">
 						<ListView.ItemTemplate>
 							<DataTemplate>
 								<ViewCell>
-									<StackLayout Orientation="Vertical">
+									<StackLayout Orientation="Vertical" Padding="5">
 										<Label Text="{Binding fullname}" Margin="4">
 										</Label>
+										<Label Text="{Binding vcm_prescriberspeciality}" TextColor="Gray" FontSize="14" Margin="4" />
 									</StackLayout>
 								</ViewCell>
 							</DataTemplate>

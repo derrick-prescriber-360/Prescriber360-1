@@ -29,7 +29,8 @@ namespace LoginPage
 		{
 			if ((GlobalVariables.GlobalContactList == null) || (GlobalVariables.GlobalContactList.Count == 0))
 				Initialize();
-			else {
+			else
+			{
 				foreach (var c in GlobalVariables.GlobalContactList)
 				{
 					PrescriberContactList.Add(c);

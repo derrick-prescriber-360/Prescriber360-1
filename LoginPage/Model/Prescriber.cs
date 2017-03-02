@@ -18,6 +18,7 @@ namespace LoginPage
 		public int haschildrencode { get; set; }
 		public double? exchangerate { get; set; }
 		public int preferredappointmenttimecode { get; set; }
+		public string vcm_prescriberspeciality { get; set; }
 		public bool isbackofficecustomer { get; set; }
 		public string _owningbusinessunit_value { get; set; }
 		public string _owninguser_value { get; set; }
@@ -136,10 +137,10 @@ namespace LoginPage
 		public object address1_utcoffset { get; set; }
 		public object address2_latitude { get; set; }
 		public object creditlimit_base { get; set; }
-		public object address1_city { get; set; }
+		public string address1_city { get; set; }
 		public object address3_latitude { get; set; }
 		public object callback { get; set; }
-		public object middlename { get; set; }
+		public string middlename { get; set; }
 		public object aging30 { get; set; }
 		public object company { get; set; }
 		public object address2_utcoffset { get; set; }
@@ -152,7 +153,7 @@ namespace LoginPage
 		public object telephone2 { get; set; }
 		public object address3_upszone { get; set; }
 		public object address3_line1 { get; set; }
-		public object emailaddress1 { get; set; }
+		public string emailaddress1 { get; set; }
 		public object vcm_valeantid { get; set; }
 		public object address1_stateorprovince { get; set; }
 		public object lastonholdtime { get; set; }
@@ -163,7 +164,7 @@ namespace LoginPage
 		public object childrensnames { get; set; }
 		public object vcm_leadresolutioncomments { get; set; }
 		public object address3_line2 { get; set; }
-		public object address1_name { get; set; }
+		public string address1_name { get; set; }
 		public object department { get; set; }
 		public object educationcode { get; set; }
 		public object address2_telephone3 { get; set; }
@@ -190,9 +191,9 @@ namespace LoginPage
 		public object importsequencenumber { get; set; }
 		public object address3_telephone1 { get; set; }
 		public object address2_telephone2 { get; set; }
-		public object telephone1 { get; set; }
+		public string telephone1 { get; set; }
 		public object address1_line3 { get; set; }
-		public object description { get; set; }
+		public string description { get; set; }
 		public object _slaid_value { get; set; }
 		public object entityimage_timestamp { get; set; }
 		public object address3_primarycontactname { get; set; }

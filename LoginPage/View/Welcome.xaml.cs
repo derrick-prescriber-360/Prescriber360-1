@@ -11,8 +11,8 @@ namespace LoginPage
 		public Welcome()
 		{
 			InitializeComponent();
-			//BindingContext = new PrescriberViewModel(this.Navigation);
-			BindingContext = new AppointmentViewModel(this.Navigation);
+			BindingContext = new PrescriberViewModel(this.Navigation);
+			//BindingContext = new AppointmentViewModel(this.Navigation);
 			//Add both contacts and accounts below correction with int type of country code
 			//BindingContext = new AccountViewModel(this.Navigation);
 		}
@@ -41,7 +41,10 @@ namespace LoginPage
 			contactList.SelectedItem = null;
 			contactName.Text = selectedContact.fullname;
 			contactList.IsVisible = false;
-			await DisplayAlert("contact Selected", selectedContact.firstname, "Ok");
+			await Navigation.PushAsync(new CustomerMasterPage(selectedContact)
+			{
+				Title = "Prescriber360"
+			});
 		}
 
 		async void Handle_Customer_Navigation(object sender, System.EventArgs e)

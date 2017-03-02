@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace LoginPage
 {
-	public class AppointmentViewModel: INotifyPropertyChanged
+	public class AppointmentViewModel : INotifyPropertyChanged
 	{
 		private INavigation _navigation;
 		private bool isBusy;

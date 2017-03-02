@@ -16,9 +16,8 @@ namespace LoginPage
 	{
 		private JObject jsonData = null;
 		private Repository repository = new Repository();
-		private ObservableCollection<Prescriber> _filteredaccountcontactlist = new ObservableCollection<Prescriber>();
-		private List<Prescriber> _accountcontactlist = new List<Prescriber>();
-		private List<Prescriber> _prescribercontactlist = new List<Prescriber>();
+		private ObservableCollection<Account> _filteredaccountcontactlist = new ObservableCollection<Account>();
+		private List<Account> _accountcontactlist = new List<Account>();
 		private Account _selectedaccountContact;
 		private INavigation _navigation;
 
@@ -26,20 +25,20 @@ namespace LoginPage
 		public AccountViewModel() { }
 		public AccountViewModel(INavigation navigation)
 		{
-			if ((GlobalVariables.GlobalContactList == null) || (GlobalVariables.GlobalContactList.Count == 0))
+			if ((GlobalVariables.GlobalAccountList == null) || (GlobalVariables.GlobalAccountList.Count == 0))
 				Initialize();
 			else
 			{
-				foreach (var c in GlobalVariables.GlobalContactList)
+				foreach (var c in GlobalVariables.GlobalAccountList)
 				{
-					PrescriberContactList.Add(c);
-					_prescribercontactlist.Add(c);
+					AccountContactList.Add(c);
+					_accountcontactlist.Add(c);
 				}
 			}
 			_navigation = navigation;
 		}
 
-		public ObservableCollection<Prescriber> PrescriberContactList
+		public ObservableCollection<Account> AccountContactList
 		{
 			get
 			{
@@ -68,16 +67,11 @@ namespace LoginPage
 			try
 			{
 				_accountcontactlist = await GetAccountContactList();
-				_prescribercontactlist = await GetPrescribersContactList();
 				foreach (var c in _accountcontactlist)
 				{
-					PrescriberContactList.Add(c);
+					AccountContactList.Add(c);
 				}
 
-				foreach (var c in _prescribercontactlist)
-				{
-					PrescriberContactList.Add(c);
-				}
 			}
 			catch (Exception err)
 			{
@@ -91,12 +85,12 @@ namespace LoginPage
 			//ContactList = t;
 		}
 
-		public async Task<List<Prescriber>> GetAccountContactList()
+		public async Task<List<Account>> GetAccountContactList()
 		{
 			try
 			{
 				jsonData = await repository.Retrieve(GlobalVariables.AuthToken, "accounts", "");
-				var contactdata = JsonConvert.DeserializeObject<PrescriberContactList>(jsonData.ToString());
+				var contactdata = JsonConvert.DeserializeObject<AccountContactList>(jsonData.ToString());
 				return contactdata.value;
 			}
 			catch (Exception err)
@@ -107,23 +101,6 @@ namespace LoginPage
 			return null;
 		}
 
-		public async Task<List<Prescriber>> GetPrescribersContactList()
-		{
-			try
-			{
-				Debug.WriteLine("Prescriber");
-				jsonData = await repository.Retrieve(GlobalVariables.AuthToken, "contacts", "");
-				var contactdata = JsonConvert.DeserializeObject<PrescriberContactList>(jsonData.ToString());
-				Debug.WriteLine(jsonData);
-				return contactdata.value;
-			}
-			catch (Exception err)
-			{
-				Debug.WriteLine(err.Message);
-			}
-
-			return null;
-		}
 
 		protected virtual void OnPropertyChanged(string propertyName)
 		{
@@ -139,12 +116,12 @@ namespace LoginPage
 		{
 			try
 			{
-				PrescriberContactList.Clear();
+				AccountContactList.Clear();
 				foreach (var c in _accountcontactlist)
 				{
 					if (c.fullname.ToLower().Contains(text.ToLower()))
 					{
-						PrescriberContactList.Add(c);
+						AccountContactList.Add(c);
 					}
 				}
 			}

@@ -17,6 +17,14 @@ namespace LoginPage
 			BindingContext = new PrescriberViewModel(this.Navigation);
 		}
 
+		public CustomerMasterPage(Prescriber contact)
+		{
+			InitializeComponent();
+			IsPresented = true;
+			BindingContext = new PrescriberViewModel(this.Navigation);
+			Detail = new NavigationPage(new CustomerDetailPage(contact as Prescriber));
+		}
+
 		void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
 		{
 			var t = contactCustomerList.SelectedItem as Prescriber;

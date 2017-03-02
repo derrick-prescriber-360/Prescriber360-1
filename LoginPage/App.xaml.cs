@@ -22,7 +22,12 @@ namespace LoginPage
 		public void ShowMainPage()
 		{
 			Debug.WriteLine("I am called ShowMainPage");
-			MainPage = new NavigationPage(new Welcome());
+			var welcomePage = new NavigationPage(new Welcome());
+			//welcomePage.BarBackgroundColor = Color.FromHex("77D065");
+			//welcomePage.BarTextColor = Color.White;
+			//welcomePage.Title = "Prescriber360";
+			MainPage = welcomePage;
+
 		}
 
 		public void Logout()

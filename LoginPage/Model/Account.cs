@@ -19,6 +19,7 @@ namespace LoginPage
 		public int haschildrencode { get; set; }
 		public double? exchangerate { get; set; }
 		public int preferredappointmenttimecode { get; set; }
+		public string vcm_prescriberspeciality { get; set; }
 		public bool isbackofficecustomer { get; set; }
 		public string _owningbusinessunit_value { get; set; }
 		public string _owninguser_value { get; set; }
