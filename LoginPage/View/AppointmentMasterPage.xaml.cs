@@ -18,7 +18,6 @@ namespace LoginPage
 
 		void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
 		{
-			var t = appointmentList.SelectedItem as Appointment;
 			Detail = new NavigationPage(new AppointmentDetailsPage(appointmentList.SelectedItem as Appointment));
 		}
 

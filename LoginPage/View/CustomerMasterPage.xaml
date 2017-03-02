@@ -9,7 +9,18 @@
 			<ContentPage.Content>
 				<StackLayout Orientation="Vertical" BackgroundColor="Silver">
 					<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="50" Margin="10,10,10,5" TextChanged="Handle_TextChanged" />
-					<ListView ItemsSource="{Binding PrescriberContactList}" Margin="10" ItemSelected="Handle_ItemSelected" x:Name="contactCustomerList" HasUnevenRows="true" SeparatorColor="Silver" IsVisible="true">
+					<Grid Margin="20,0,20,0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Button x:Name="hcp" Clicked="HCP_Handle_Clicked" Text="HCP" TextColor="Black" BackgroundColor="White" Grid.Row="0" Grid.Column="0" />
+						<Button x:Name="hco" Clicked="HCO_Handle_Clicked" Text="HCO" TextColor="Black" BackgroundColor="White" Grid.Row="0" Grid.Column="1" />
+					</Grid>
+					<ListView ItemsSource="{Binding ContactList}" Margin="10" ItemSelected="Handle_ItemSelected" x:Name="contactCustomerList" HasUnevenRows="true" SeparatorColor="Silver" IsVisible="true">
 						<ListView.ItemTemplate>
 							<DataTemplate>
 								<ViewCell>

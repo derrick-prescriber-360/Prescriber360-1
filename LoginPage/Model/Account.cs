@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Newtonsoft.Json;
 
 namespace LoginPage
 {
@@ -11,14 +11,15 @@ namespace LoginPage
 
 	public class Account
 	{
-		public int customertypecode { get; set; }
+		public int? customertypecode { get; set; }
 		public string mobilephone { get; set; }
-		public string yomifullname { get; set; }
+		[JsonProperty(PropertyName = "name")]
+		public string fullname { get; set; }
 		public bool merged { get; set; }
 		public int territorycode { get; set; }
 		public int haschildrencode { get; set; }
 		public double? exchangerate { get; set; }
-		public int preferredappointmenttimecode { get; set; }
+		public int? preferredappointmenttimecode { get; set; }
 		public string vcm_prescriberspeciality { get; set; }
 		public bool isbackofficecustomer { get; set; }
 		public string _owningbusinessunit_value { get; set; }
@@ -28,25 +29,24 @@ namespace LoginPage
 		public string lastname { get; set; }
 		public bool donotpostalmail { get; set; }
 		public bool donotphone { get; set; }
-		public int preferredcontactmethodcode { get; set; }
+		public int? preferredcontactmethodcode { get; set; }
 		public string _ownerid_value { get; set; }
-		public int vcm_prescriberstatus { get; set; }
-		public int customersizecode { get; set; }
+		public int? vcm_prescriberstatus { get; set; }
+		public int? customersizecode { get; set; }
 		public string firstname { get; set; }
-		public int vcm_leadresolution { get; set; }
-		public int address2_addresstypecode { get; set; }
+		public int? vcm_leadresolution { get; set; }
+		public int? address2_addresstypecode { get; set; }
 		public bool vcm_maillocked { get; set; }
 		public bool donotemail { get; set; }
-		public int address2_shippingmethodcode { get; set; }
-		public string fullname { get; set; }
+		public int? address2_shippingmethodcode { get; set; }
 		public string address1_addressid { get; set; }
-		public int address2_freighttermscode { get; set; }
-		public int statuscode { get; set; }
+		public int? address2_freighttermscode { get; set; }
+		public int? statuscode { get; set; }
 		public string createdon { get; set; }
-		public int versionnumber { get; set; }
+		public int? versionnumber { get; set; }
 		public bool donotsendmm { get; set; }
 		public bool donotfax { get; set; }
-		public int leadsourcecode { get; set; }
+		public int? leadsourcecode { get; set; }
 		public bool vcm_dermatology { get; set; }
 		public string modifiedon { get; set; }
 		public bool creditonhold { get; set; }
@@ -65,12 +65,12 @@ namespace LoginPage
 		public string contactid { get; set; }
 		public bool vcm_aesthetics { get; set; }
 		public bool participatesinworkflow { get; set; }
-		public int statecode { get; set; }
+		public int? statecode { get; set; }
 		public bool vcm_nocontact { get; set; }
 		public string address2_addressid { get; set; }
 		public bool vcm_practicingnew { get; set; }
 		public bool vcm_faxlocked { get; set; }
-		public int shippingmethodcode { get; set; }
+		public int? shippingmethodcode { get; set; }
 		public object address3_city { get; set; }
 		public object address2_line2 { get; set; }
 		public object assistantphone { get; set; }
@@ -85,7 +85,7 @@ namespace LoginPage
 		public object pager { get; set; }
 		public object address3_postalcode { get; set; }
 		public object _createdbyexternalparty_value { get; set; }
-		public object address1_composite { get; set; }
+		public string address1_composite { get; set; }
 		public object assistantname { get; set; }
 		public object anniversary { get; set; }
 		public object governmentid { get; set; }
@@ -154,7 +154,7 @@ namespace LoginPage
 		public object telephone2 { get; set; }
 		public object address3_upszone { get; set; }
 		public object address3_line1 { get; set; }
-		public object emailaddress1 { get; set; }
+		public string emailaddress1 { get; set; }
 		public object vcm_valeantid { get; set; }
 		public object address1_stateorprovince { get; set; }
 		public object lastonholdtime { get; set; }
@@ -192,9 +192,9 @@ namespace LoginPage
 		public object importsequencenumber { get; set; }
 		public object address3_telephone1 { get; set; }
 		public object address2_telephone2 { get; set; }
-		public object telephone1 { get; set; }
+		public string telephone1 { get; set; }
 		public object address1_line3 { get; set; }
-		public object description { get; set; }
+		public string description { get; set; }
 		public object _slaid_value { get; set; }
 		public object entityimage_timestamp { get; set; }
 		public object address3_primarycontactname { get; set; }

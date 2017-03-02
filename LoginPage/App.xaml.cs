@@ -21,11 +21,7 @@ namespace LoginPage
 
 		public void ShowMainPage()
 		{
-			Debug.WriteLine("I am called ShowMainPage");
 			var welcomePage = new NavigationPage(new Welcome());
-			//welcomePage.BarBackgroundColor = Color.FromHex("77D065");
-			//welcomePage.BarTextColor = Color.White;
-			//welcomePage.Title = "Prescriber360";
 			MainPage = welcomePage;
 
 		}

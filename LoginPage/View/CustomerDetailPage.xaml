@@ -19,11 +19,16 @@
 				<Label x:Name="designation" Text="PCM - MEDICAL PERSON" Grid.Row="1" Grid.Column="0" XAlign="Start" />
 				<Label x:Name="phonenumber" Text="+918722682249" Grid.Row="1" Grid.Column="1" XAlign="Start" />
 				<Label x:Name="description" Text="Here is my short description" Grid.Row="2" Grid.Column="0" XAlign="Start" />
-				<Button Text="Call" TextColor="White" WidthRequest="10" BackgroundColor="#77D065" Margin="0,0,200,0" Grid.Row="2" Grid.Column="1" />
+				<StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="0,0,10,0">
+					<Button Text="Log Call" WidthRequest="80" TextColor="White"  BackgroundColor="#77D065" />
+					<Button Text="Detail" WidthRequest="70" TextColor="White"  BackgroundColor="#77D065" />
+					<Button Text="Media" WidthRequest="70" TextColor="White"  BackgroundColor="#77D065" />
+					<Button Text="Affliations" WidthRequest="80" TextColor="White"  BackgroundColor="#77D065" />
+				</StackLayout>
 			</Grid>
-			<StackLayout HeightRequest="1" BackgroundColor="Silver" Margin="0,10,0,0" />
+			<StackLayout HeightRequest="1" BackgroundColor="Silver" Margin="20,10,20,0" />
 			<Label Text="General Information" FontSize="20" Margin="20,5,5,5" />
-			<StackLayout HeightRequest="1" BackgroundColor="Silver" />
+			<StackLayout Margin="20,0,20,0" HeightRequest="1" BackgroundColor="Silver" />
 			<Grid HorizontalOptions="Center" Margin="0,10,0,0">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*" />

@@ -40,7 +40,6 @@ namespace LoginPage
 				GlobalVariables.AuthToken = authenticationResult.AccessToken;
 				Debug.WriteLine(GlobalVariables.AuthToken);
 				App.Current.Properties["IsLoggedIn"] = true;
-				Debug.WriteLine(_ilm);
 				_ilm.ShowMainPage();
 				isBusy.IsRunning = false;
 				//isBusy.IsVisible = false;

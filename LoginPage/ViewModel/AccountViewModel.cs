@@ -25,20 +25,25 @@ namespace LoginPage
 		public AccountViewModel() { }
 		public AccountViewModel(INavigation navigation)
 		{
+			Debug.WriteLine("Account view model Consturctor called");
 			if ((GlobalVariables.GlobalAccountList == null) || (GlobalVariables.GlobalAccountList.Count == 0))
+			{
 				Initialize();
+				Debug.WriteLine("Initialize called");
+			}
 			else
 			{
 				foreach (var c in GlobalVariables.GlobalAccountList)
 				{
-					AccountContactList.Add(c);
+					ContactList.Add(c);
 					_accountcontactlist.Add(c);
 				}
+				Debug.WriteLine("Account view model else called");
 			}
 			_navigation = navigation;
 		}
 
-		public ObservableCollection<Account> AccountContactList
+		public ObservableCollection<Account> ContactList
 		{
 			get
 			{
@@ -69,7 +74,8 @@ namespace LoginPage
 				_accountcontactlist = await GetAccountContactList();
 				foreach (var c in _accountcontactlist)
 				{
-					AccountContactList.Add(c);
+					ContactList.Add(c);
+					GlobalVariables.GlobalAccountList.Add(c);
 				}
 
 			}
@@ -77,12 +83,6 @@ namespace LoginPage
 			{
 				Debug.WriteLine(err.Message);
 			}
-			//_copycontactlist = ContactList;
-			//Contact contact = new Contact();
-			//contact.firstname = "test";
-			//List<Contact> t = new List<Contact>();
-			//t.Add(contact);
-			//ContactList = t;
 		}
 
 		public async Task<List<Account>> GetAccountContactList()
@@ -116,12 +116,12 @@ namespace LoginPage
 		{
 			try
 			{
-				AccountContactList.Clear();
+				ContactList.Clear();
 				foreach (var c in _accountcontactlist)
 				{
 					if (c.fullname.ToLower().Contains(text.ToLower()))
 					{
-						AccountContactList.Add(c);
+						ContactList.Add(c);
 					}
 				}
 			}

@@ -7,7 +7,7 @@
 	<StackLayout>
 		<Entry Placeholder="Search customers ..." x:Name="contactName" HeightRequest="60" Margin="100,60,100,0" TextChanged="Handle_TextChanged_ContactList">
 		</Entry>
-		<ListView ItemsSource="{Binding PrescriberContactList}" ItemTapped="Handle_ItemTapped_Selected_Contact" HeightRequest="160" x:Name="contactList" HasUnevenRows="true" Margin="100,0,100,0" SeparatorColor="Transparent" IsVisible="false">
+		<ListView ItemsSource="{Binding ContactList}" ItemTapped="Handle_ItemTapped_Selected_Contact" HeightRequest="160" x:Name="contactList" HasUnevenRows="true" Margin="100,0,100,0" SeparatorColor="Transparent" IsVisible="false">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>

@@ -33,14 +33,15 @@ namespace LoginPage
 			{
 				foreach (var c in GlobalVariables.GlobalContactList)
 				{
-					PrescriberContactList.Add(c);
+					ContactList.Add(c);
 					_prescribercontactlist.Add(c);
 				}
 			}
 			_navigation = navigation;
+
 		}
 
-		public ObservableCollection<Prescriber> PrescriberContactList
+		public ObservableCollection<Prescriber> ContactList
 		{
 			get
 			{
@@ -100,7 +101,7 @@ namespace LoginPage
 
 				foreach (var c in _prescribercontactlist)
 				{
-					PrescriberContactList.Add(c);
+					ContactList.Add(c);
 					GlobalVariables.GlobalContactList.Add(c);
 				}
 				IsBusy = false;
@@ -151,12 +152,12 @@ namespace LoginPage
 		{
 			try
 			{
-				PrescriberContactList.Clear();
+				ContactList.Clear();
 				foreach (var c in _prescribercontactlist)
 				{
 					if (c.fullname.ToLower().Contains(text.ToLower()))
 					{
-						PrescriberContactList.Add(c);
+						ContactList.Add(c);
 					}
 				}
 			}

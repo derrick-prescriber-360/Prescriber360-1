@@ -28,6 +28,7 @@ namespace LoginPage
 			response = await httpClient.SendAsync(req);
 			var responseBodyAsText = await response.Content.ReadAsStringAsync();
 			jResult = JObject.Parse(responseBodyAsText);
+			Debug.WriteLine("entity");
 			Debug.WriteLine(jResult);
 			return jResult;
 		}
