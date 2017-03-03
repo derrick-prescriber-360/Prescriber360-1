@@ -32,5 +32,10 @@ namespace LoginPage
 				Debug.WriteLine(err.Message);
 			}
 		}
+
+		void Handle_Refreshing(object sender, System.EventArgs e)
+		{
+			ViewModel.Refresh();
+		}
 	}
 }

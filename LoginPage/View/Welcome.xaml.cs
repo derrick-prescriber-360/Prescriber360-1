@@ -11,10 +11,10 @@ namespace LoginPage
 		public Welcome()
 		{
 			InitializeComponent();
-			BindingContext = new PrescriberViewModel(this.Navigation);
-			//BindingContext = new AppointmentViewModel(this.Navigation);
+			//BindingContext = new PrescriberViewModel(this.Navigation);
 			//Add both contacts and accounts below correction with int type of country code
-			var a = new AccountViewModel(this.Navigation);
+			//var a = new AccountViewModel(this.Navigation);
+			var av = new AppointmentViewModel(this.Navigation);
 		}
 
 		private PrescriberViewModel ViewModel { get { return BindingContext as PrescriberViewModel; } }
@@ -41,7 +41,7 @@ namespace LoginPage
 			contactList.SelectedItem = null;
 			contactName.Text = selectedContact.fullname;
 			contactList.IsVisible = false;
-			await Navigation.PushAsync(new CustomerMasterPage(selectedContact )
+			await Navigation.PushAsync(new CustomerMasterPage(selectedContact)
 			{
 				Title = "Prescriber360"
 			});

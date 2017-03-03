@@ -18,7 +18,7 @@ namespace LoginPage
 		private Repository repository = new Repository();
 		private ObservableCollection<Appointment> _filteredappointmentcontactlist = new ObservableCollection<Appointment>();
 		private List<Appointment> _appointmentlist = new List<Appointment>();
-		private Appointment _selectedAppointment;
+		private bool isRefreshing;
 
 		public AppointmentViewModel(INavigation navigation)
 		{
@@ -62,6 +62,20 @@ namespace LoginPage
 			}
 		}
 
+		public bool IsRefreshing
+		{
+			get
+			{
+				return isRefreshing;
+			}
+
+			set
+			{
+				isRefreshing = value;
+				OnPropertyChanged("IsRefreshing");
+			}
+		}
+
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -74,7 +88,7 @@ namespace LoginPage
 			}
 		}
 
-		async void Initialize()
+		public async void Initialize()
 		{
 			try
 			{
@@ -92,6 +106,31 @@ namespace LoginPage
 			catch (Exception err)
 			{
 				IsBusy = false;
+				Debug.WriteLine(err.Message);
+			}
+		}
+
+		public async void Refresh()
+		{
+			try
+			{
+				IsRefreshing = true;
+				_appointmentlist.Clear();
+				AppointmentList.Clear();
+				GlobalVariables.GlobalAppointmentList.Clear();
+				_appointmentlist = await GetAppointmentList();
+
+				foreach (var c in _appointmentlist)
+				{
+					AppointmentList.Add(c);
+					GlobalVariables.GlobalAppointmentList.Add(c);
+				}
+				IsRefreshing = false;
+			}
+
+			catch (Exception err)
+			{
+				IsRefreshing = false;
 				Debug.WriteLine(err.Message);
 			}
 		}
