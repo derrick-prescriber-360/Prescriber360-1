@@ -12,7 +12,6 @@ namespace LoginPage
 {
 	public class AppointmentViewModel : INotifyPropertyChanged
 	{
-		private INavigation _navigation;
 		private bool isBusy;
 		private JObject jsonData = null;
 		private Repository repository = new Repository();
@@ -32,7 +31,6 @@ namespace LoginPage
 					_appointmentlist.Add(c);
 				}
 			}
-			_navigation = navigation;
 		}
 
 		public ObservableCollection<Appointment> AppointmentList

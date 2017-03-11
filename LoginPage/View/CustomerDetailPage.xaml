@@ -20,7 +20,7 @@
 				<Label x:Name="phonenumber" Text="+918722682249" Grid.Row="1" Grid.Column="1" XAlign="Start" />
 				<Label x:Name="description" Text="Here is my short description" Grid.Row="2" Grid.Column="0" XAlign="Start" />
 				<StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="0,0,10,0">
-					<Button Text="Log Call" WidthRequest="80" TextColor="White"  BackgroundColor="#77D065" />
+					<Button Text="Log Call" Clicked="Handle_LogCall_Clicked" WidthRequest="80" TextColor="White"  BackgroundColor="#77D065" />
 					<Button Text="Detail" WidthRequest="70" TextColor="White"  BackgroundColor="#77D065" />
 					<Button Text="Media" WidthRequest="70" TextColor="White"  BackgroundColor="#77D065" />
 					<Button Text="Affliations" WidthRequest="80" TextColor="White"  BackgroundColor="#77D065" />

@@ -19,16 +19,18 @@ namespace LoginPage
 		private ObservableCollection<Prescriber> _filteredprescribercontactlist = new ObservableCollection<Prescriber>();
 		private List<Prescriber> _prescribercontactlist = new List<Prescriber>();
 		private Prescriber _selectedprescriberContact;
-		private INavigation _navigation;
 		private bool isBusy;
 		private ILoginManager _ilm;
-
 		public event PropertyChangedEventHandler PropertyChanged;
+
 		public PrescriberViewModel() { }
+
 		public PrescriberViewModel(INavigation navigation)
 		{
 			if ((GlobalVariables.GlobalContactList == null) || (GlobalVariables.GlobalContactList.Count == 0))
+			{
 				Initialize();
+			}
 			else
 			{
 				foreach (var c in GlobalVariables.GlobalContactList)
@@ -37,7 +39,6 @@ namespace LoginPage
 					_prescribercontactlist.Add(c);
 				}
 			}
-			_navigation = navigation;
 
 		}
 
@@ -112,12 +113,6 @@ namespace LoginPage
 				IsBusy = false;
 				Debug.WriteLine(err.Message);
 			}
-			//_copycontactlist = ContactList;
-			//Contact contact = new Contact();
-			//contact.firstname = "test";
-			//List<Contact> t = new List<Contact>();
-			//t.Add(contact);
-			//ContactList = t;
 		}
 
 		public async Task<List<Prescriber>> GetPrescriberContactList()

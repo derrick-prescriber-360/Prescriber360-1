@@ -16,6 +16,8 @@ namespace LoginPage
 		{
 			InitializeComponent();
 			_ilm = ilm;
+			//var authenticationService = DependencyService.Get<IAuthenticator>();
+			//authenticationService.RequestAccess();
 		}
 
 		public async void Login_Clicked(object sender, System.EventArgs e)

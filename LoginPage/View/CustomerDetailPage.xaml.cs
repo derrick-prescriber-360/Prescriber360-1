@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 
 namespace LoginPage
 {
 	public partial class CustomerDetailPage : ContentPage
 	{
-		
+
 		private PrescriberViewModel ViewModel { get { return BindingContext as PrescriberViewModel; } }
 		public CustomerDetailPage()
 		{
@@ -53,5 +53,12 @@ namespace LoginPage
 			this.stateCode.Text = contact.statecode.ToString();
 
 		}
+
+		async void Handle_LogCall_Clicked(object sender, System.EventArgs e)
+		{
+			await Navigation.PushPopupAsync(new LogCallView());
+
+		}
+
 	}
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using UIKit;
 
@@ -13,7 +12,7 @@ namespace LoginPage.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
-
+			Rg.Plugins.Popup.IOS.Popup.Init();
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);

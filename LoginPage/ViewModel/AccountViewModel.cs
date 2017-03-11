@@ -19,7 +19,6 @@ namespace LoginPage
 		private ObservableCollection<Account> _filteredaccountcontactlist = new ObservableCollection<Account>();
 		private List<Account> _accountcontactlist = new List<Account>();
 		private Account _selectedaccountContact;
-		private INavigation _navigation;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		public AccountViewModel() { }
@@ -40,7 +39,6 @@ namespace LoginPage
 				}
 				Debug.WriteLine("Account view model else called");
 			}
-			_navigation = navigation;
 		}
 
 		public ObservableCollection<Account> ContactList

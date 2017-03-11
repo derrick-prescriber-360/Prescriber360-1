@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:signaturePad="clr-namespace:Acr.XamForms.SignaturePad;assembly=Acr.XamForms.SignaturePad" xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LoginPage.LogCallView" BackgroundColor="White">
+	<StackLayout Margin="100">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Label Text="Prescriber" Grid.Row="0" Grid.Column="0" />
+			<Label x:Name="prescriberName" Text="Sourav" Grid.Row="0" Grid.Column="1" />
+			<Label Text="Call Type" Grid.Row="1" Grid.Column="0" />
+			<Picker x:Name="callType" Grid.Row="1" Grid.Column="1">
+				<Picker.Items>
+					<x:String>Details Only</x:String>
+					<x:String>Sample Only</x:String>
+					<x:String>Promotional W/Signature</x:String>
+					<x:String>Promotional W/O Signature</x:String>
+				</Picker.Items>
+			</Picker>
+			<Label Text="Call Date" Grid.Row="2" Grid.Column="0" />
+			<DatePicker Grid.Row="2" Grid.Column="1"/>
+			<Label Text="Call Status" Grid.Row="3" Grid.Column="0" />
+			<Picker x:Name="callStatus" Grid.Row="3" Grid.Column="1">
+				<Picker.Items>
+					<x:String>Active</x:String>
+					<x:String>InActive</x:String>
+					<x:String>Closed</x:String>
+					<x:String>Cancelled</x:String>
+				</Picker.Items>
+			</Picker>
+			<Label Text="Signature" Grid.Row="5" Grid.Column="0" />
+			<signaturePad:SignaturePadView x:Name="padView" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2" BackgroundColor="White" CaptionTextColor="Black" ClearText="Clear" ClearTextColor="Red" PromptText="X"
+				PromptTextColor="Black" SignatureLineColor="Black" StrokeColor="Black" StrokeWidth="1" />
+			<Button Text="Log" TextColor="White" Clicked="Handle_Log_Clicked" BackgroundColor="#77D065" Grid.Row="6" Grid.Column="3" />
+			<Button Text="Close" TextColor="White" Clicked="Handle_Close_Clicked" BackgroundColor="#77D065" Grid.Row="6" Grid.Column="4" />
+		</Grid>
+	</StackLayout>
+</pages:PopupPage>

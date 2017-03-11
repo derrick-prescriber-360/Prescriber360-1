@@ -15,6 +15,7 @@ namespace LoginPage
 			if (isLoggedIn)
 				MainPage = new NavigationPage(new Welcome());
 			else {
+				//MainPage = new Welcome();
 				MainPage = new LoginModalPage(this);
 			}
 		}

@@ -4,11 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using UIKit;
 using Xamarin.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Diagnostics;
+using Foundation;
+using EventKit;
 
 [assembly: Dependency(typeof(LoginPage.iOS.AuthenticationService))]
 namespace LoginPage.iOS
@@ -37,5 +35,35 @@ namespace LoginPage.iOS
 			}
 
 		}
+
+		public void RequestAccess()
+		{
+			Debug.WriteLine("Request Acces called");
+			try
+			{
+				EventSingleton.Current.EventStore.RequestAccess(EKEntityType.Event,
+					(bool granted, NSError e) =>
+					{
+						Device.BeginInvokeOnMainThread(() =>
+						{
+							if (granted) { }
+							else
+								new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
+						});
+					});
+				EventSingleton.Current.EventStore.RequestAccess(EKEntityType.Reminder,
+					(bool granted, NSError e) =>
+					{
+						Device.BeginInvokeOnMainThread(() =>
+							{
+								if (granted) { }
+								else
+									new UIAlertView("Access Denied", "User Denied Access to Calendars/Reminders", null, "ok", null).Show();
+							});
+					});
+			}
+			catch (Exception err) { Debug.WriteLine(err.Message); }
+		}
+
 	}
 }

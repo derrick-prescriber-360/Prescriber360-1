@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Rg.Plugins.Popup.Extensions;
 
 namespace LoginPage
 {
@@ -11,10 +12,10 @@ namespace LoginPage
 		public Welcome()
 		{
 			InitializeComponent();
-			//BindingContext = new PrescriberViewModel(this.Navigation);
-			//Add both contacts and accounts below correction with int type of country code
-			//var a = new AccountViewModel(this.Navigation);
-			var av = new AppointmentViewModel(this.Navigation);
+			BindingContext = new PrescriberViewModel(this.Navigation);
+			////Add both contacts and accounts below correction with int type of country code
+			//new AccountViewModel(this.Navigation);
+			//new AppointmentViewModel(this.Navigation);
 		}
 
 		private PrescriberViewModel ViewModel { get { return BindingContext as PrescriberViewModel; } }
@@ -36,7 +37,6 @@ namespace LoginPage
 		{
 			if (contactList.SelectedItem == null)
 				return;
-			//this.Navigation.PushAsync(new TeamDetailView(listView.SelectedItem as Team));
 			Prescriber selectedContact = contactList.SelectedItem as Prescriber;
 			contactList.SelectedItem = null;
 			contactName.Text = selectedContact.fullname;
@@ -62,6 +62,12 @@ namespace LoginPage
 			{
 				Title = "Prescriber360"
 			});
+
+		}
+
+		void Handle_Report_Navigation(object sender, System.EventArgs e)
+		{
+			Debug.WriteLine("Pop up called");
 
 		}
 	}
